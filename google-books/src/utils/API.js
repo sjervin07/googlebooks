@@ -1,23 +1,23 @@
-import http from "../services/httpService";
-import axios from axios
+import axios from "axios";
 
 export default {
   // Gets books from the Google API
-  getBooks: function(q) {
-    return http.get("/api/google", {
-      params: { q: "title:" + q }
-    });
+  getBooks: function(query) {
+    return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
   },
-  // Gets all saved books
-  getSavedBooks: function() {
-    return http.get("/api//books");
-  },
-  // Deletes the saved book with the given id
-  deleteBook: function(id) {
-    return http.delete("/api//books/" + id);
-  },
-  // Saves an book to the database
+  
+  // Saves a book to the database
   saveBook: function(bookData) {
-    return http.post("/api//books", bookData);
+    return axios.post("/api/books", bookData).then(result => result.data);
+  },
+
+  // Retrieves saved books from the database
+  savedBooks: function() {
+    return axios.get("/api/books").then(result => result.data);
+  },
+
+  // Deletes the book from the database
+  deleteBook: function(id) {
+    return axios.delete("/api/books/" + id).then(result => result.data);
   }
 };
