@@ -1,5 +1,4 @@
 import React from "react";
-import Form from "../components/Form";
 import Results from "../components/Books";
 import API from "../utils/API";
 
@@ -38,17 +37,11 @@ class Search extends React.Component {
         });
     };
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-        this.searchBook(this.state.search);
-    };
-
     render() {
         return (
             <div>
                 <Form
                     search={this.state.search}
-                    handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
                 />
                 <div className="container">

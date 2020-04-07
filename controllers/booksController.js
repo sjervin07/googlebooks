@@ -1,7 +1,5 @@
 const db = require ("../models");
 
-//bookController methods
-
 module.exports = {
     findAll: function(req,res) {
         db.Book.find(req.query)

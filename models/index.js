@@ -1,1 +1,1 @@
-module.exports = {Book:require("./book")};
+module.exports = {Books:require("./books")};
